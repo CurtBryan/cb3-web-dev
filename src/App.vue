@@ -1,32 +1,79 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="navbar-app">
+      <NavBar />
     </div>
-    <router-view />
+    <div class="body-app">
+      <router-view />
+    </div>
   </div>
 </template>
 
+<script>
+import NavBar from "./components/NavBar/NavBar";
+export default {
+  name: "App",
+  components: {
+    NavBar
+  }
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "./scss/variables";
+html {
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-#nav {
-  padding: 30px;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: $gray;
+}
+#app {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  .navbar-app {
+    height: 60px;
+  }
+  .body-app {
+    min-height: calc(100vh - 60px);
+    background-image: url("./assets/home-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
   }
 }
 </style>
